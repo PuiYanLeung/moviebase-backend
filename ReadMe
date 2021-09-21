@@ -1,0 +1,306 @@
+User Register function URL: http://localhost/user/register
+POST JSON
+{
+	"email": "test@abc.com",
+	"password": "password",
+	"checkPassword": "password"
+}
+
+201 Created
+{
+  "msg": "registered successfully",
+  "user_id": 11,
+  "user_email": "test@abc.com"
+}
+
+401 Unauthorized
+{
+  "msg": "User already exists"
+}
+
+User Login function URL: http://localhost/user/login
+POST JSON
+{
+	"username": "test@abc.com",
+	"password": "password"
+}
+
+200 OK
+{
+  "msg": "login successfully",
+  "user": {
+    "id": 2,
+    "email": "test@abc.com"
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6InRlc3RAYWJjLmNvbSJ9LCJpYXQiOjE2MzA3NTA0NTB9.VwRWd3f6f7rQxOleXhk52cFxIHFYz8ZfehYeDqwfP-4"
+}
+
+401 Unauthorized
+{
+  "msg": "User not found"
+}
+
+Find One User function URL: http://localhost/user/finduser
+GET JSON
+{
+	"id": 1
+}
+
+200 OK
+{
+  "finduser successfully": {
+    "id": 1,
+    "email": "jimmy@abc.com"
+  }
+}
+
+Edit User function URL: http://localhost/user/edit
+PUT JSON
+{
+	"id": 1,
+	"newEmail": "jimmy@abc.com"
+}
+
+401 Unauthorized
+{
+  "msg": "User not found"
+}
+
+Delete User function URL:http://localhost/user/delete
+DELETE JSON
+{
+	"id": 1
+}
+
+200 OK
+{
+  "message": "delete user successfully"
+}
+
+401 Unauthorized
+{
+  "message": "User not found"
+}
+
+List Movie function URL: http://localhost/film/listmovie
+
+200 OK
+[
+  {
+    "id": 1,
+    "name": "Gladiator",
+    "genre": "Action",
+    "lang": "English",
+    "filmyear": 2000,
+    "duration": "155",
+    "restriction": "15",
+    "director": "Ridley Scott",
+    "casting": "Russell Crowe, Joaquin Phoenix",
+    "rating": 4,
+    "photoURL": "\nhttps://upload.wikimedia.org/wikipedia/en/f/fb/Gladiator_%282000_film_poster%29.png",
+    "image": "Gladiator.jpeg",
+    "createdAt": "2021-09-04T22:30:00.000Z",
+    "updatedAt": "2021-09-04T22:30:00.000Z"
+  },
+  {
+    "id": 2,
+    "name": "The Dark Knight",
+    "genre": "Action",
+    "lang": "English",
+    "filmyear": 2008,
+    "duration": "152",
+    "restriction": "12",
+    "director": "Christoper Nolan",
+    "casting": "Christian Bale, Michael Caine",
+    "rating": 5,
+    "photoURL": "https://upload.wikimedia.org/wikipedia/en/8/8a/Dark_Knight.jpg",
+    "image": "DarkKnight.jpg",
+    "createdAt": "2021-09-04T22:33:00.000Z",
+    "updatedAt": "2021-09-04T22:33:00.000Z"
+  },
+  ...
+]
+
+Find Movie function URL: http://localhost/film/findmovie
+GET JSON
+{
+	"id": 3
+}
+
+200 OK
+{
+  "findmovie successfully": {
+    "id": 3,
+    "name": "Slumdog Millionaire",
+    "genre": "Drama",
+    "lang": "English",
+    "filmyear": 2008,
+    "duration": "120",
+    "restriction": "15",
+    "director": "Dany Boyle",
+    "casting": "Dev Patel, Freida Pinto",
+    "rating": 4,
+    "photoURL": "https://upload.wikimedia.org/wikipedia/en/9/92/Slumdog_Millionaire_poster.png",
+    "image": "Slumdog.jpg",
+    "createdAt": "2021-09-04T22:35:00.000Z",
+    "updatedAt": "2021-09-04T22:35:00.000Z"
+  }
+}
+
+Add Movie function URL: http://localhost/film/addmovie
+POST JSON
+{
+	"name" : "Tenet",
+	"genre" : "Science Fiction",
+	"lang" : "English",
+  "year": "2020", 
+	"duration" : "143",
+	"restriction" : "12",
+	"director" : "Christopher Nolan",
+	"casting": "John David Washington",
+	"rating": "4",
+	"photoURL": "https://upload.wikimedia.org/wikipedia/en/1/14/Tenet_movie_poster.jpg",
+	"image" : "N/A"
+}
+
+201 Created
+{
+  "message": "Created a movie successfully",
+  "movie_id": 22
+}
+
+Edit Movie function URL: http://localhost/film/editmovie
+PUT JSON
+{
+	"id" : 2,
+	"newName": "Tenant"
+}
+
+201 Created
+{
+  "msg": "edit movie successfully"
+}
+
+404 Not Found
+{
+  "msg": "movie does not exist"
+}
+
+Delete Movie function URL: http://localhost/film/deletemovie
+DELETE JSON
+{
+	"id": 1
+}
+
+200 OK
+{
+  "msg": "delete movie successfully"
+}
+
+404 Not Found
+{
+  "msg": "movie does not exist"
+}
+
+Add WatchList function URL: http://localhost/watchlist/addwatchlist
+POST JSON
+{
+	"UserId" : "2",
+	"FilmId" : "11"
+}
+
+201 Created
+{
+  "message": "Add a movie into WatchList successfully",
+  "watchlist_id": 14
+}
+
+Find WatchList function URL: http://localhost/watchlist/findwatchlist
+GET JSON
+{
+	"UserId" : "5"
+}
+
+200 OK
+{
+  "findWatchList successfully": [
+    {
+      "id": 10,
+      "name": "No Country for Old Men",
+      "genre": "Crime,Drama",
+      "lang": "English",
+      "filmyear": 2007,
+      "duration": "122",
+      "restriction": "15",
+      "director": "Ethan Coen",
+      "casting": "Tommy Lee Jones, Javier Bardem",
+      "rating": 3,
+      "photoURL": "https://upload.wikimedia.org/wikipedia/en/8/8b/No_Country_for_Old_Men_poster.jpg",
+      "image": "Nocountryforoldmen.jpg",
+      "WatchLists": [
+        {
+          "id": 8,
+          "UserId": 5,
+          "FilmId": 10,
+          "createdAt": "2021-09-05T17:04:16.000Z",
+          "updatedAt": "2021-09-05T17:04:16.000Z"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Das Boot",
+      "genre": "Drama",
+      "lang": "German",
+      "filmyear": 1981,
+      "duration": "149",
+      "restriction": "12",
+      "director": "Wolfgang Petersen",
+      "casting": "J?rgen Prochnow, Herbert Gr?nemeyer",
+      "rating": 3,
+      "photoURL": "https://upload.wikimedia.org/wikipedia/en/a/a3/Das_boot_ver1.jpg",
+      "image": "Dasboot.jpg",
+      "WatchLists": [
+        {
+          "id": 9,
+          "UserId": 5,
+          "FilmId": 11,
+          "createdAt": "2021-09-05T17:04:20.000Z",
+          "updatedAt": "2021-09-05T17:04:20.000Z"
+        }
+      ]
+    }
+  ]
+}
+
+Delete Movie from WatchList function URL: http://localhost/watchlist/deletefilmfromWatchList
+DELETE JSON
+{
+	"id" : "4"	
+}
+
+200 OK
+{
+  "msg": "delete a film from WatchList successfully"
+}
+
+404 Not Found
+{
+  "msg": "WatchList does not exist"
+}
+
+Remove all movies from User's WatchList function URL: http://localhost/watchlist/removeuserwatchlist
+DELETE JSON
+{
+	"UserId" : 5
+}
+
+200 OK
+{
+  "msg": "delete WatchList successfully"
+}
+
+404 Not Found
+{
+  "msg": "WatchList does not exist"
+}
